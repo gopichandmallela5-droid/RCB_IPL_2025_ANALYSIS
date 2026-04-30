@@ -200,6 +200,15 @@
       max-width: none;
       border: 1px solid #dbe7ef;
     }
+    .table-wrap.compact {
+      display: flex;
+      justify-content: center;
+      background: #f8fafc;
+    }
+    .table-wrap.compact img {
+      width: min(100%, 520px);
+      max-width: 100%;
+    }
     .chart-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -225,6 +234,11 @@
       background: var(--panel);
     }
     .chart-card.wide { grid-column: 1 / -1; }
+    .chart-card.pivot {
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
     .relationship {
       display: grid;
@@ -422,13 +436,13 @@
       </div>
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Sixes by opponent</span><h3>Boundary power by matchup</h3></div><p>Pivot view of sixes hit by RCB against each opponent.</p></div>
-        <div class="table-wrap"><img src="images/tables/sum-of-sixes-by-each-opponent-table.png" alt="Sixes by opponent table" /></div>
-        <div class="chart-grid"><figure class="chart-card wide"><img src="images/charts/sum-of-sixes-by-each-opponent-chart-1.png" alt="Sixes by opponent chart" /><figcaption>Pivot chart for sixes by opponent.</figcaption></figure></div>
+        <div class="table-wrap compact"><img src="images/tables/sum-of-sixes-by-each-opponent-table.png" alt="Sixes by opponent table" /></div>
+        <div class="chart-grid"><figure class="chart-card wide pivot"><img src="images/charts/sum-of-sixes-by-each-opponent-chart-1.png" alt="Sixes by opponent chart" /><figcaption>Pivot chart for sixes by opponent.</figcaption></figure></div>
       </article>
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Wickets by opponent</span><h3>Dismissal risk by matchup</h3></div><p>Pivot view of wickets lost by RCB against each opponent.</p></div>
-        <div class="table-wrap"><img src="images/tables/sum-of-wickets-lost-by-rcb-agai-table.png" alt="Wickets by opponent table" /></div>
-        <div class="chart-grid"><figure class="chart-card wide"><img src="images/charts/sum-of-wickets-lost-by-rcb-agai-chart-1.png" alt="Wickets by opponent chart" /><figcaption>Pivot chart for wickets lost by opponent.</figcaption></figure></div>
+        <div class="table-wrap compact"><img src="images/tables/sum-of-wickets-lost-by-rcb-agai-table.png" alt="Wickets by opponent table" /></div>
+        <div class="chart-grid"><figure class="chart-card wide pivot"><img src="images/charts/sum-of-wickets-lost-by-rcb-agai-chart-1.png" alt="Wickets by opponent chart" /><figcaption>Pivot chart for wickets lost by opponent.</figcaption></figure></div>
       </article>
     </section>
 
