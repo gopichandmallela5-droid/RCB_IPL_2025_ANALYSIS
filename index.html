@@ -209,6 +209,15 @@
       width: min(100%, 520px);
       max-width: 100%;
     }
+    .image-note {
+      margin: 0;
+      padding: 13px clamp(18px, 3vw, 28px) 15px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(9, 11, 16, .42);
+      font-size: 14px;
+      line-height: 1.6;
+    }
     .chart-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -328,33 +337,37 @@
       <article class="analysis-block">
         <div class="analysis-title"><div><span>RCB batting table</span><h3>First innings batting performance</h3></div><p>Runs, balls, boundaries, strike rate, performance score, and player rank.</p></div>
         <div class="table-wrap"><img src="images/tables/summary-1st-innings-rcb-table.png" alt="RCB first innings batting table" /></div>
+        <p class="image-note">This table ranks RCB batters using runs, balls, boundaries, strike rate, and a performance score.</p>
         <div class="chart-grid">
-          <figure class="chart-card wide"><img src="images/charts/summary-1st-innings-rcb-chart-1.png" alt="RCB batting chart" /><figcaption>Related graph from the RCB first innings batting summary.</figcaption></figure>
+          <figure class="chart-card wide"><img src="images/charts/summary-1st-innings-rcb-chart-1.png" alt="RCB batting chart" /><figcaption>Visual comparison of RCB batting contribution, helping spot top scorers and high-impact quick innings.</figcaption></figure>
         </div>
       </article>
 
       <article class="analysis-block">
         <div class="analysis-title"><div><span>PBKS batting table</span><h3>Second innings batting performance</h3></div><p>Punjab batting output with runs, balls, boundaries, and strike rate.</p></div>
         <div class="table-wrap"><img src="images/tables/summary-2nd-innings-pbks-table.png" alt="PBKS second innings batting table" /></div>
+        <p class="image-note">This table summarizes Punjab's chase by player, making runs and strike-rate pressure easy to compare.</p>
         <div class="chart-grid">
-          <figure class="chart-card"><img src="images/charts/summary-2nd-innings-pbks-chart-1.png" alt="PBKS batting chart one" /><figcaption>PBKS batting graph 1.</figcaption></figure>
-          <figure class="chart-card"><img src="images/charts/summary-2nd-innings-pbks-chart-2.png" alt="PBKS batting chart two" /><figcaption>PBKS batting graph 2.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/summary-2nd-innings-pbks-chart-1.png" alt="PBKS batting chart one" /><figcaption>Shows which PBKS batters carried the chase through scoring volume.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/summary-2nd-innings-pbks-chart-2.png" alt="PBKS batting chart two" /><figcaption>Highlights scoring rate differences so finishers and anchors are easier to separate.</figcaption></figure>
         </div>
       </article>
 
       <article class="analysis-block">
         <div class="analysis-title"><div><span>PBKS bowling table</span><h3>First innings bowling analysis</h3></div><p>Bowling economy, wickets, dot balls, extras, and performance labels.</p></div>
         <div class="table-wrap"><img src="images/tables/1st-innings-bowling-table.png" alt="PBKS bowling table" /></div>
+        <p class="image-note">This bowling table compares overs, runs, wickets, economy, dot balls, and extras for PBKS bowlers.</p>
         <div class="chart-grid">
-          <figure class="chart-card wide"><img src="images/charts/1st-innings-bowling-chart-1.png" alt="PBKS bowling chart" /><figcaption>Related graph from the first innings bowling table.</figcaption></figure>
+          <figure class="chart-card wide"><img src="images/charts/1st-innings-bowling-chart-1.png" alt="PBKS bowling chart" /><figcaption>Turns the bowling table into a quick view of wicket-taking and run-control impact.</figcaption></figure>
         </div>
       </article>
 
       <article class="analysis-block">
         <div class="analysis-title"><div><span>RCB bowling table</span><h3>Second innings bowling analysis</h3></div><p>RCB bowling control in the chase, including economy, wickets, and dot balls.</p></div>
         <div class="table-wrap"><img src="images/tables/2nd-innings-bowling-table.png" alt="RCB bowling table" /></div>
+        <p class="image-note">This table identifies RCB's best control spells by combining economy, wickets, and dot-ball pressure.</p>
         <div class="chart-grid">
-          <figure class="chart-card wide"><img src="images/charts/2nd-innings-bowling-chart-1.png" alt="RCB bowling chart" /><figcaption>Related graph from the RCB bowling table.</figcaption></figure>
+          <figure class="chart-card wide"><img src="images/charts/2nd-innings-bowling-chart-1.png" alt="RCB bowling chart" /><figcaption>Shows which RCB bowlers created pressure and which spells were expensive.</figcaption></figure>
         </div>
       </article>
     </section>
@@ -368,28 +381,31 @@
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Batting powerplay</span><h3>Runs, dots, wickets, and boundaries</h3></div><p>Powerplay batting performance by MatchID and opponent.</p></div>
         <div class="table-wrap"><img src="images/tables/rcb-batting-powerplay-overs-table.png" alt="RCB batting powerplay table" /></div>
+        <p class="image-note">This table tracks RCB's first-six-over starts across matches, including dot balls and wickets lost.</p>
         <div class="chart-grid">
           <figure class="chart-card"><img src="images/charts/rcb-batting-powerplay-overs-chart-1.png" alt="RCB batting powerplay chart one" /><figcaption>Runs, dot balls, and wickets in the powerplay.</figcaption></figure>
-          <figure class="chart-card"><img src="images/charts/rcb-batting-powerplay-overs-chart-2.png" alt="RCB batting powerplay chart two" /><figcaption>Powerplay boundary and scoring graph.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-batting-powerplay-overs-chart-2.png" alt="RCB batting powerplay chart two" /><figcaption>Boundary chart showing whether RCB started through fours, sixes, or lower-risk scoring.</figcaption></figure>
         </div>
       </article>
 
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Batting middle overs</span><h3>Middle-over scoring control</h3></div><p>RCB's middle-over runs, dots, wickets, fours, and sixes across group-stage matches.</p></div>
         <div class="table-wrap"><img src="images/tables/rcb-batting-middle-overs-table.png" alt="RCB batting middle overs table" /></div>
+        <p class="image-note">This table explains RCB's middle-over batting stability, where dot balls and wickets usually decide momentum.</p>
         <div class="chart-grid">
-          <figure class="chart-card"><img src="images/charts/rcb-batting-middle-overs-chart-1.png" alt="RCB batting middle chart one" /><figcaption>Middle-over run and wicket pattern.</figcaption></figure>
-          <figure class="chart-card"><img src="images/charts/rcb-batting-middle-overs-chart-2.png" alt="RCB batting middle chart two" /><figcaption>Middle-over supporting graph 2.</figcaption></figure>
-          <figure class="chart-card wide"><img src="images/charts/rcb-batting-middle-overs-chart-3.png" alt="RCB batting middle chart three" /><figcaption>Middle-over supporting graph 3.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-batting-middle-overs-chart-1.png" alt="RCB batting middle chart one" /><figcaption>Compares middle-over runs with wickets and dot-ball pressure by match.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-batting-middle-overs-chart-2.png" alt="RCB batting middle chart two" /><figcaption>Highlights boundary production during the middle phase.</figcaption></figure>
+          <figure class="chart-card wide"><img src="images/charts/rcb-batting-middle-overs-chart-3.png" alt="RCB batting middle chart three" /><figcaption>Summarizes middle-over match variation so strong and weak phases stand out quickly.</figcaption></figure>
         </div>
       </article>
 
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Batting depth overs</span><h3>Death/depth-over acceleration</h3></div><p>Late-innings batting output by opponent, including wickets and boundary-hitting.</p></div>
         <div class="table-wrap"><img src="images/tables/rcb-batting-depth-overs-table.png" alt="RCB batting depth overs table" /></div>
+        <p class="image-note">This table focuses on death/depth overs, where acceleration, wickets, and six-hitting are most important.</p>
         <div class="chart-grid">
-          <figure class="chart-card"><img src="images/charts/rcb-batting-depth-overs-chart-1.png" alt="RCB batting depth chart one" /><figcaption>Depth-over run and wicket graph.</figcaption></figure>
-          <figure class="chart-card"><img src="images/charts/rcb-batting-depth-overs-chart-2.png" alt="RCB batting depth chart two" /><figcaption>Depth-over supporting graph 2.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-batting-depth-overs-chart-1.png" alt="RCB batting depth chart one" /><figcaption>Shows how strongly RCB finished each innings and what wickets cost them late.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-batting-depth-overs-chart-2.png" alt="RCB batting depth chart two" /><figcaption>Shows boundary impact in the final phase of the innings.</figcaption></figure>
         </div>
       </article>
     </section>
@@ -403,28 +419,31 @@
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Bowling powerplay</span><h3>New-ball pressure and wickets</h3></div><p>Runs conceded, dots, wickets, and boundary control in the first six overs.</p></div>
         <div class="table-wrap"><img src="images/tables/rcb-bowling-powerplay-overs-table.png" alt="RCB bowling powerplay table" /></div>
+        <p class="image-note">This table measures RCB's new-ball bowling control through runs conceded, dots, wickets, and boundaries.</p>
         <div class="chart-grid">
-          <figure class="chart-card"><img src="images/charts/rcb-bowling-powerplay-overs-chart-1.png" alt="RCB bowling powerplay chart one" /><figcaption>Bowling powerplay graph 1.</figcaption></figure>
-          <figure class="chart-card"><img src="images/charts/rcb-bowling-powerplay-overs-chart-2.png" alt="RCB bowling powerplay chart two" /><figcaption>Bowling powerplay graph 2.</figcaption></figure>
-          <figure class="chart-card wide"><img src="images/charts/rcb-bowling-powerplay-overs-chart-3.png" alt="RCB bowling powerplay chart three" /><figcaption>Bowling powerplay graph 3.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-powerplay-overs-chart-1.png" alt="RCB bowling powerplay chart one" /><figcaption>Compares runs conceded with dot balls and wickets in the powerplay.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-powerplay-overs-chart-2.png" alt="RCB bowling powerplay chart two" /><figcaption>Shows boundary leakage against each opponent in the first phase.</figcaption></figure>
+          <figure class="chart-card wide"><img src="images/charts/rcb-bowling-powerplay-overs-chart-3.png" alt="RCB bowling powerplay chart three" /><figcaption>Gives an extra powerplay comparison view for quick opponent-to-opponent scanning.</figcaption></figure>
         </div>
       </article>
 
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Bowling middle overs</span><h3>Containment through the innings</h3></div><p>Middle-over bowling trends across all group-stage opponents.</p></div>
         <div class="table-wrap"><img src="images/tables/rcb-bowling-middle-overs-table.png" alt="RCB bowling middle overs table" /></div>
+        <p class="image-note">This table shows whether RCB controlled the middle overs or allowed opponents to rebuild.</p>
         <div class="chart-grid">
-          <figure class="chart-card"><img src="images/charts/rcb-bowling-middle-overs-chart-1.png" alt="RCB bowling middle chart one" /><figcaption>Bowling middle-over graph 1.</figcaption></figure>
-          <figure class="chart-card"><img src="images/charts/rcb-bowling-middle-overs-chart-2.png" alt="RCB bowling middle chart two" /><figcaption>Bowling middle-over graph 2.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-middle-overs-chart-1.png" alt="RCB bowling middle chart one" /><figcaption>Tracks middle-over runs conceded alongside wickets and dots.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-middle-overs-chart-2.png" alt="RCB bowling middle chart two" /><figcaption>Highlights boundary control during the middle phase.</figcaption></figure>
         </div>
       </article>
 
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Bowling depth overs</span><h3>Late-over pressure and damage control</h3></div><p>RCB's death/depth-over bowling outcomes by match and opponent.</p></div>
         <div class="table-wrap"><img src="images/tables/rcb-bowling-depth-overs-table.png" alt="RCB bowling depth overs table" /></div>
+        <p class="image-note">This table explains RCB's late-over bowling, where run prevention and wicket-taking are both high value.</p>
         <div class="chart-grid">
-          <figure class="chart-card"><img src="images/charts/rcb-bowling-depth-overs-chart-1.png" alt="RCB bowling depth chart one" /><figcaption>Bowling depth-over graph 1.</figcaption></figure>
-          <figure class="chart-card"><img src="images/charts/rcb-bowling-depth-overs-chart-2.png" alt="RCB bowling depth chart two" /><figcaption>Bowling depth-over graph 2.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-depth-overs-chart-1.png" alt="RCB bowling depth chart one" /><figcaption>Shows which matches had costly death-over bowling and where wickets helped control damage.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-depth-overs-chart-2.png" alt="RCB bowling depth chart two" /><figcaption>Shows late-over boundary pressure against each opponent.</figcaption></figure>
         </div>
       </article>
     </section>
@@ -437,12 +456,14 @@
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Sixes by opponent</span><h3>Boundary power by matchup</h3></div><p>Pivot view of sixes hit by RCB against each opponent.</p></div>
         <div class="table-wrap compact"><img src="images/tables/sum-of-sixes-by-each-opponent-table.png" alt="Sixes by opponent table" /></div>
-        <div class="chart-grid"><figure class="chart-card wide pivot"><img src="images/charts/sum-of-sixes-by-each-opponent-chart-1.png" alt="Sixes by opponent chart" /><figcaption>Pivot chart for sixes by opponent.</figcaption></figure></div>
+        <p class="image-note">This pivot table shows which opponents RCB hit the most sixes against.</p>
+        <div class="chart-grid"><figure class="chart-card wide pivot"><img src="images/charts/sum-of-sixes-by-each-opponent-chart-1.png" alt="Sixes by opponent chart" /><figcaption>Bar chart version of the sixes pivot, making the strongest matchups easier to see.</figcaption></figure></div>
       </article>
       <article class="analysis-block">
         <div class="analysis-title"><div><span>Wickets by opponent</span><h3>Dismissal risk by matchup</h3></div><p>Pivot view of wickets lost by RCB against each opponent.</p></div>
         <div class="table-wrap compact"><img src="images/tables/sum-of-wickets-lost-by-rcb-agai-table.png" alt="Wickets by opponent table" /></div>
-        <div class="chart-grid"><figure class="chart-card wide pivot"><img src="images/charts/sum-of-wickets-lost-by-rcb-agai-chart-1.png" alt="Wickets by opponent chart" /><figcaption>Pivot chart for wickets lost by opponent.</figcaption></figure></div>
+        <p class="image-note">This pivot table shows which opponents caused RCB to lose the most wickets.</p>
+        <div class="chart-grid"><figure class="chart-card wide pivot"><img src="images/charts/sum-of-wickets-lost-by-rcb-agai-chart-1.png" alt="Wickets by opponent chart" /><figcaption>Bar chart version of wicket losses, quickly showing the toughest bowling matchups for RCB.</figcaption></figure></div>
       </article>
     </section>
 
@@ -460,9 +481,9 @@
       <div class="analysis-block">
         <div class="analysis-title"><div><span>Model tables</span><h3>Match mapping and phase pivot summaries</h3></div><p>These tables show how the workbook combines batting and bowling phase relationships.</p></div>
         <div class="relationship" style="padding: clamp(14px, 2vw, 22px);">
-          <div class="table-wrap"><img src="images/tables/sheet12-table.png" alt="MatchID to opponent relationship table" /></div>
-          <div class="table-wrap"><img src="images/tables/sheet17-table.png" alt="Batting phase relationship pivot table" /></div>
-          <div class="table-wrap"><img src="images/tables/sheet18-table.png" alt="Wicket phase relationship pivot table" /></div>
+          <div><div class="table-wrap"><img src="images/tables/sheet12-table.png" alt="MatchID to opponent relationship table" /></div><p class="image-note">MatchID mapping table used to connect each match with its opponent.</p></div>
+          <div><div class="table-wrap"><img src="images/tables/sheet17-table.png" alt="Batting phase relationship pivot table" /></div><p class="image-note">Batting phase pivot that combines powerplay, middle, and depth-over runs by match.</p></div>
+          <div><div class="table-wrap"><img src="images/tables/sheet18-table.png" alt="Wicket phase relationship pivot table" /></div><p class="image-note">Wicket phase pivot that compares where wickets were lost across innings phases.</p></div>
         </div>
       </div>
     </section>
