@@ -2,3 +2,5 @@ analysis/
 node_modules/
 inspect-workbook.mjs
 export-workbook-assets.mjs
+export-excel-assets.ps1
+build-table-images.py

@@ -3,76 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RCB IPL 2025 Analytics Portfolio</title>
-  <meta name="description" content="Excel-powered RCB IPL 2025 analysis portfolio covering final match dashboards, phase analysis, pivot tables, Power Pivot, and XLOOKUP insights." />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>RCB IPL 2025 Excel Analytics Portfolio</title>
+  <meta name="description" content="RCB IPL 2025 Excel analytics portfolio with final match dashboards, Power Pivot relationships, pivot tables, XLOOKUP, and phase-wise batting and bowling graphs." />
   <style>
     :root {
       --bg: #090b10;
+      --ink: #f8fafc;
+      --muted: #a7b1c2;
       --panel: #111722;
-      --panel-soft: #172131;
-      --text: #f8fafc;
-      --muted: #a9b4c4;
-      --line: rgba(255, 255, 255, 0.1);
+      --soft: #172131;
+      --line: rgba(255, 255, 255, .12);
       --red: #d71920;
       --gold: #f5c451;
-      --blue: #38bdf8;
-      --green: #34d399;
-      --shadow: 0 22px 70px rgba(0, 0, 0, 0.32);
+      --cyan: #38bdf8;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
       background:
-        linear-gradient(120deg, rgba(215, 25, 32, 0.18), transparent 34%),
-        radial-gradient(circle at 82% 12%, rgba(245, 196, 81, 0.14), transparent 28%),
+        linear-gradient(135deg, rgba(215, 25, 32, .18), transparent 36%),
+        radial-gradient(circle at 84% 8%, rgba(245, 196, 81, .13), transparent 26%),
         var(--bg);
-      color: var(--text);
       letter-spacing: 0;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
     .nav {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 20;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 14px clamp(18px, 4vw, 56px);
-      background: rgba(9, 11, 16, 0.82);
+      gap: 18px;
+      padding: 14px clamp(16px, 4vw, 54px);
+      background: rgba(9, 11, 16, .86);
       border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(14px);
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .crest {
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; }
+    .badge {
       display: grid;
       width: 34px;
       height: 34px;
@@ -81,78 +55,45 @@
       border-radius: 50%;
       color: var(--gold);
       font-size: 12px;
-      line-height: 1;
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      padding: 9px 11px;
-      border-radius: 8px;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.07);
-    }
+    .links { display: flex; gap: 8px; color: var(--muted); font-size: 14px; }
+    .links a { padding: 9px 10px; border-radius: 8px; }
+    .links a:hover { background: rgba(255,255,255,.07); color: var(--ink); }
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
-      gap: clamp(26px, 5vw, 70px);
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .82fr);
+      gap: clamp(28px, 5vw, 70px);
       align-items: center;
-      min-height: calc(100vh - 64px);
-      padding: clamp(42px, 7vw, 92px) clamp(18px, 4vw, 56px) 40px;
+      min-height: calc(100vh - 63px);
+      padding: clamp(44px, 8vw, 96px) clamp(16px, 4vw, 54px) 44px;
     }
-
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      margin-bottom: 18px;
+      gap: 10px;
       color: var(--gold);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
       text-transform: uppercase;
     }
-
-    .eyebrow::before {
-      content: "";
-      width: 36px;
-      height: 2px;
-      background: var(--gold);
-    }
-
+    .eyebrow::before { content: ""; width: 36px; height: 2px; background: var(--gold); }
     h1 {
-      max-width: 850px;
-      margin: 0;
-      font-size: clamp(42px, 8vw, 92px);
-      line-height: 0.94;
+      max-width: 880px;
+      margin: 18px 0 0;
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: .95;
       letter-spacing: 0;
     }
-
-    .hero-copy {
-      max-width: 710px;
+    .hero p {
+      max-width: 720px;
       margin: 24px 0 0;
       color: var(--muted);
       font-size: clamp(17px, 2vw, 21px);
       line-height: 1.7;
     }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .button {
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -160,701 +101,372 @@
       padding: 0 18px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text);
-      font-weight: 800;
-    }
-
-    .button.primary {
-      border-color: transparent;
-      background: var(--red);
-    }
-
-    .hero-visual {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #101827;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-visual img {
-      width: 100%;
-      height: clamp(230px, 28vw, 360px);
-      object-fit: cover;
-      object-position: left top;
-    }
-
-    .hero-caption {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 18px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .score-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.035);
-    }
-
-    .score {
-      min-height: 116px;
-      padding: 24px clamp(16px, 3vw, 34px);
-      border-right: 1px solid var(--line);
-    }
-
-    .score:last-child {
-      border-right: 0;
-    }
-
-    .score span {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .score strong {
-      display: block;
-      margin-top: 9px;
-      font-size: clamp(28px, 4vw, 46px);
-      line-height: 1;
-    }
-
-    main {
-      overflow: hidden;
-    }
-
-    section {
-      padding: clamp(54px, 8vw, 94px) clamp(18px, 4vw, 56px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-      margin-bottom: 30px;
-    }
-
-    h2 {
-      max-width: 820px;
-      margin: 0;
-      font-size: clamp(30px, 5vw, 56px);
-      line-height: 1.05;
-      letter-spacing: 0;
-    }
-
-    .section-head p,
-    .section-lede {
-      max-width: 680px;
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
-    }
-
-    .panel {
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(17, 23, 34, 0.84);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
-    }
-
-    .panel.wide {
-      grid-column: span 8;
-    }
-
-    .panel.side {
-      grid-column: span 4;
-    }
-
-    .panel.half {
-      grid-column: span 6;
-    }
-
-    .panel.full {
-      grid-column: 1 / -1;
-    }
-
-    .panel-body {
-      padding: clamp(18px, 3vw, 28px);
-    }
-
-    .panel-kicker {
-      color: var(--gold);
-      font-size: 12px;
+      background: rgba(255,255,255,.06);
       font-weight: 900;
-      text-transform: uppercase;
     }
-
-    h3 {
-      margin: 9px 0 10px;
-      font-size: clamp(21px, 3vw, 31px);
-      line-height: 1.15;
-      letter-spacing: 0;
-    }
-
-    .panel p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .visual-frame {
-      background: #f8fafc;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .visual-frame img {
-      width: 100%;
-      height: clamp(230px, 26vw, 340px);
-      object-fit: cover;
-      object-position: left top;
-    }
-
-    .insight-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    .insight {
-      padding: 15px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.045);
-    }
-
-    .insight strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .chart-panel {
-      min-height: 360px;
-      padding: 20px;
-    }
-
-    canvas {
-      width: 100% !important;
-      height: 320px !important;
-    }
-
-    .method-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .method {
-      min-height: 138px;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.045);
-    }
-
-    .method span {
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .method strong {
-      display: block;
-      margin-top: 12px;
-      font-size: 20px;
-    }
-
-    .method p {
-      margin: 9px 0 0;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .shot {
+    .btn.primary { background: var(--red); border-color: transparent; }
+    .hero-card {
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel);
+      box-shadow: 0 24px 70px rgba(0,0,0,.34);
+    }
+    .hero-card img { width: 100%; background: #f8fafc; }
+    .hero-card footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    .shot img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      object-position: top left;
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .kpi { padding: 24px clamp(16px, 3vw, 34px); border-right: 1px solid var(--line); }
+    .kpi:last-child { border-right: 0; }
+    .kpi span { display: block; color: var(--muted); font-size: 12px; font-weight: 900; text-transform: uppercase; }
+    .kpi strong { display: block; margin-top: 8px; font-size: clamp(30px, 4vw, 46px); line-height: 1; }
+
+    section {
+      padding: clamp(56px, 8vw, 94px) clamp(16px, 4vw, 54px);
+      border-bottom: 1px solid var(--line);
+    }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+    h2 { max-width: 840px; margin: 0; font-size: clamp(30px, 5vw, 56px); line-height: 1.05; letter-spacing: 0; }
+    .section-head p { max-width: 680px; margin: 0; color: var(--muted); line-height: 1.7; }
+
+    .story-grid, .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .note, .method {
+      min-height: 150px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(17, 23, 34, .82);
+    }
+    .note span, .method span, .analysis-title span {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .note strong, .method strong { display: block; margin-top: 10px; font-size: 20px; }
+    .note p, .method p { margin: 8px 0 0; color: var(--muted); line-height: 1.55; }
+
+    .analysis-block {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(17, 23, 34, .76);
+      overflow: hidden;
+    }
+    .analysis-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px clamp(18px, 3vw, 28px);
+      border-bottom: 1px solid var(--line);
+    }
+    .analysis-title h3 {
+      margin: 7px 0 0;
+      font-size: clamp(23px, 3vw, 34px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+    .analysis-title p { max-width: 600px; margin: 0; color: var(--muted); line-height: 1.65; }
+    .table-wrap {
+      overflow-x: auto;
+      padding: clamp(14px, 2vw, 22px);
       background: #f8fafc;
     }
-
-    .shot figcaption {
-      padding: 14px 16px 16px;
+    .table-wrap img {
+      width: max(100%, 880px);
+      max-width: none;
+      border: 1px solid #dbe7ef;
+    }
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      padding: clamp(14px, 2vw, 22px);
+    }
+    .chart-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #1d1d1d;
+    }
+    .chart-card img {
+      width: 100%;
+      height: auto;
+      background: #242424;
+    }
+    .chart-card figcaption {
+      padding: 12px 14px 14px;
       color: var(--muted);
       font-size: 14px;
       line-height: 1.5;
+      background: var(--panel);
     }
+    .chart-card.wide { grid-column: 1 / -1; }
 
-    .footer {
-      padding: 28px clamp(18px, 4vw, 56px);
-      color: var(--muted);
-      font-size: 14px;
+    .relationship {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: 16px;
+      align-items: start;
     }
+    .relationship .table-wrap { border-radius: 8px; }
+    .relationship .table-wrap img { width: 100%; min-width: 0; }
+    .footer { padding: 28px clamp(16px, 4vw, 54px); color: var(--muted); font-size: 14px; }
 
     @media (max-width: 980px) {
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-
-      .score-strip {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .panel.wide,
-      .panel.side,
-      .panel.half {
-        grid-column: 1 / -1;
-      }
-
-      .method-grid,
-      .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .hero, .relationship { grid-template-columns: 1fr; min-height: auto; }
+      .kpis, .story-grid, .method-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .chart-grid { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 680px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .nav-links {
-        width: 100%;
-        overflow-x: auto;
-        padding-bottom: 2px;
-      }
-
-      .hero-actions,
-      .section-head {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .score-strip,
-      .method-grid,
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-
-      .score {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .score:last-child {
-        border-bottom: 0;
-      }
+      .nav, .section-head, .analysis-title { flex-direction: column; align-items: stretch; }
+      .links { overflow-x: auto; padding-bottom: 2px; }
+      .kpis, .story-grid, .method-grid { grid-template-columns: 1fr; }
+      .kpi { border-right: 0; border-bottom: 1px solid var(--line); }
+      .kpi:last-child { border-bottom: 0; }
+      .table-wrap img { width: 820px; }
     }
   </style>
 </head>
 <body>
-  <nav class="nav" aria-label="Primary navigation">
-    <a class="brand" href="#top" aria-label="RCB Analytics home">
-      <span class="crest">RCB</span>
-      <span>IPL 2025 Analytics</span>
-    </a>
-    <div class="nav-links">
-      <a href="#overview">Overview</a>
-      <a href="#final">Final Match</a>
-      <a href="#phases">Group Stages</a>
+  <nav class="nav">
+    <a class="brand" href="#top"><span class="badge">RCB</span><span>IPL 2025 Analytics</span></a>
+    <div class="links">
+      <a href="#final">Final</a>
+      <a href="#batting">Batting</a>
+      <a href="#bowling">Bowling</a>
+      <a href="#relationships">Relationships</a>
       <a href="#method">Method</a>
-      <a href="#gallery">Dashboards</a>
     </div>
   </nav>
 
   <header class="hero" id="top">
     <div>
       <div class="eyebrow">Excel analytics portfolio</div>
-      <h1>RCB IPL 2025 performance analysis</h1>
-      <p class="hero-copy">
-        A single-project portfolio built from Excel dashboards, Power Pivot models,
-        pivot tables, XLOOKUP logic, and ball-by-ball match analysis. The work
-        compares the final match scorecard with RCB's phase-wise batting and
-        bowling trends across the group stage.
+      <h1>RCB IPL 2025 dashboard story</h1>
+      <p>
+        A clean portfolio built from your Excel workbook, showing one table at a
+        time and then every related graph from that same analysis. The project
+        highlights final match analysis, group-stage batting and bowling phases,
+        pivot-table opponent views, XLOOKUP, and Power Pivot-style relationships.
       </p>
       <div class="hero-actions">
-        <a class="button primary" href="#final">View final match</a>
-        <a class="button" href="#gallery">See dashboards</a>
+        <a class="btn primary" href="#final">View final dashboards</a>
+        <a class="btn" href="#relationships">See model relationships</a>
       </div>
     </div>
-    <div class="hero-visual" aria-label="RCB final batting dashboard preview">
-      <img src="images/final-rcb-batting.png" alt="RCB final match batting dashboard exported from Excel" />
-      <div class="hero-caption">
-        <span>Final match batting dashboard</span>
-        <span>Excel source model</span>
-      </div>
+    <div class="hero-card">
+      <img src="images/charts/rcb-batting-powerplay-overs-chart-1.png" alt="RCB batting powerplay chart" />
+      <footer><span>Excel chart export</span><span>Powerplay analysis</span></footer>
     </div>
   </header>
 
   <main>
-    <div class="score-strip" id="overview" aria-label="Project key metrics">
-      <div class="score">
-        <span>Workbook sheets</span>
-        <strong>17</strong>
-      </div>
-      <div class="score">
-        <span>Final match balls analysed</span>
-        <strong>240</strong>
-      </div>
-      <div class="score">
-        <span>Group-stage matches</span>
-        <strong>13</strong>
-      </div>
-      <div class="score">
-        <span>Analysis layers</span>
-        <strong>6</strong>
-      </div>
+    <div class="kpis">
+      <div class="kpi"><span>Workbook sheets</span><strong>17</strong></div>
+      <div class="kpi"><span>Tables rendered</span><strong>15</strong></div>
+      <div class="kpi"><span>Excel graphs added</span><strong>21</strong></div>
+      <div class="kpi"><span>Group-stage matches</span><strong>13</strong></div>
     </div>
 
     <section>
       <div class="section-head">
-        <h2>Project story</h2>
-        <p>
-          The analysis was designed to answer one question clearly: where did RCB
-          create or lose match control across batting phases, bowling phases, and
-          individual player impact?
-        </p>
+        <h2>Project overview</h2>
+        <p>The workbook is organized around final-match scorecards, phase-wise group-stage tables, opponent pivot summaries, and relationship tables that connect MatchID, opponent, batting phases, and bowling phases.</p>
       </div>
-      <div class="grid">
-        <article class="panel wide">
-          <div class="panel-body">
-            <span class="panel-kicker">Analytical goal</span>
-            <h3>Turn raw cricket score data into a decision-ready view.</h3>
-            <p>
-              The workbook converts innings scorecards and ball-by-ball tables
-              into ranked batting performance, bowling impact, phase summaries,
-              opponent comparisons, and searchable dashboard sections.
-            </p>
-            <div class="insight-list">
-              <div class="insight">
-                <strong>Final match score shape</strong>
-                RCB's ball-by-ball innings reached 185/9, while Punjab's chase
-                data reached 189/6 in the workbook model.
-              </div>
-              <div class="insight">
-                <strong>Top RCB impact</strong>
-                Jitesh Sharma ranked first in the RCB batting score with 24 off
-                10 balls at a 240 strike rate.
-              </div>
-              <div class="insight">
-                <strong>Group-stage phase view</strong>
-                The model separates batting and bowling into powerplay, middle,
-                and death/depth overs to make trends easier to compare.
-              </div>
-            </div>
-          </div>
-        </article>
-        <aside class="panel side">
-          <div class="panel-body">
-            <span class="panel-kicker">Skills demonstrated</span>
-            <h3>Excel analytics stack</h3>
-            <p>
-              Power Pivot, pivot tables, XLOOKUP, calculated performance scores,
-              conditional formatting, chart dashboards, and cricket-domain KPI
-              interpretation.
-            </p>
-          </div>
-        </aside>
+      <div class="story-grid">
+        <div class="note"><span>Final match</span><strong>Player and bowler impact</strong><p>Batting rank, strike rate, economy, wickets, dot balls, and ball-by-ball match pressure.</p></div>
+        <div class="note"><span>Batting phases</span><strong>Powerplay, middle, depth</strong><p>Runs, balls, dots, fours, sixes, and wickets split across key innings phases.</p></div>
+        <div class="note"><span>Bowling phases</span><strong>Control and damage</strong><p>Runs conceded, wickets, and dot-ball pressure compared phase by phase.</p></div>
+        <div class="note"><span>Model logic</span><strong>Relationships and lookups</strong><p>MatchID mapping, phase pivots, Power Pivot connections, and XLOOKUP examples.</p></div>
       </div>
     </section>
 
     <section id="final">
       <div class="section-head">
-        <h2>Final match analysis</h2>
-        <p>
-          The final match dashboard connects batting contribution, strike rate,
-          player ranking, bowling economy, dot-ball pressure, and ball-by-ball
-          scoring movement.
-        </p>
+        <h2>Final match dashboards</h2>
+        <p>Each final-match section begins with the source table and then shows the graph or graphs built from that table.</p>
       </div>
-      <div class="grid">
-        <article class="panel half">
-          <div class="visual-frame">
-            <img src="images/final-rcb-batting.png" alt="RCB batting summary table with performance ranking" />
-          </div>
-          <div class="panel-body">
-            <span class="panel-kicker">RCB innings</span>
-            <h3>Player ranking combines runs and scoring tempo.</h3>
-            <p>
-              Virat Kohli led RCB's runs in the summary with 43, while Jitesh
-              Sharma produced the highest performance score through late-innings
-              acceleration.
-            </p>
-          </div>
-        </article>
-        <article class="panel half">
-          <div class="visual-frame">
-            <img src="images/final-rcb-bowling.png" alt="RCB bowling summary table with dot balls and economy" />
-          </div>
-          <div class="panel-body">
-            <span class="panel-kicker">RCB bowling</span>
-            <h3>Dot-ball pressure identifies the best control spells.</h3>
-            <p>
-              Krunal Pandya's 4 overs for 17 with 12 dot balls and 2 wickets
-              stands out as the most controlled RCB bowling spell in the final
-              match sheet.
-            </p>
-          </div>
-        </article>
-        <article class="panel full chart-panel">
-          <div class="panel-body">
-            <span class="panel-kicker">Score progression</span>
-            <h3>Final match runs by over</h3>
-          </div>
-          <canvas id="finalChart" aria-label="Final match runs by over chart"></canvas>
-        </article>
-      </div>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>RCB batting table</span><h3>First innings batting performance</h3></div><p>Runs, balls, boundaries, strike rate, performance score, and player rank.</p></div>
+        <div class="table-wrap"><img src="images/tables/summary-1st-innings-rcb-table.png" alt="RCB first innings batting table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card wide"><img src="images/charts/summary-1st-innings-rcb-chart-1.png" alt="RCB batting chart" /><figcaption>Related graph from the RCB first innings batting summary.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>PBKS batting table</span><h3>Second innings batting performance</h3></div><p>Punjab batting output with runs, balls, boundaries, and strike rate.</p></div>
+        <div class="table-wrap"><img src="images/tables/summary-2nd-innings-pbks-table.png" alt="PBKS second innings batting table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card"><img src="images/charts/summary-2nd-innings-pbks-chart-1.png" alt="PBKS batting chart one" /><figcaption>PBKS batting graph 1.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/summary-2nd-innings-pbks-chart-2.png" alt="PBKS batting chart two" /><figcaption>PBKS batting graph 2.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>PBKS bowling table</span><h3>First innings bowling analysis</h3></div><p>Bowling economy, wickets, dot balls, extras, and performance labels.</p></div>
+        <div class="table-wrap"><img src="images/tables/1st-innings-bowling-table.png" alt="PBKS bowling table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card wide"><img src="images/charts/1st-innings-bowling-chart-1.png" alt="PBKS bowling chart" /><figcaption>Related graph from the first innings bowling table.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>RCB bowling table</span><h3>Second innings bowling analysis</h3></div><p>RCB bowling control in the chase, including economy, wickets, and dot balls.</p></div>
+        <div class="table-wrap"><img src="images/tables/2nd-innings-bowling-table.png" alt="RCB bowling table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card wide"><img src="images/charts/2nd-innings-bowling-chart-1.png" alt="RCB bowling chart" /><figcaption>Related graph from the RCB bowling table.</figcaption></figure>
+        </div>
+      </article>
     </section>
 
-    <section id="phases">
+    <section id="batting">
       <div class="section-head">
-        <h2>Group-stage phase analysis</h2>
-        <p>
-          The group-stage model compares RCB's scoring and wicket patterns
-          against each opponent across powerplay, middle, and death/depth overs.
-        </p>
+        <h2>Group-stage batting relationships</h2>
+        <p>These sections show the batting tables you created for powerplay, middle, and depth overs, followed by all graphs linked to each table.</p>
       </div>
-      <div class="grid">
-        <article class="panel wide chart-panel">
-          <div class="panel-body">
-            <span class="panel-kicker">Batting phases</span>
-            <h3>Average runs by phase</h3>
-          </div>
-          <canvas id="phaseChart" aria-label="Average runs by phase chart"></canvas>
-        </article>
-        <article class="panel side">
-          <div class="panel-body">
-            <span class="panel-kicker">Key reads</span>
-            <h3>Where RCB found scoring value</h3>
-            <p>
-              RCB averaged 58.5 in the powerplay, 66.9 in the middle overs, and
-              58.7 in the death/depth overs. The LSG match had the strongest
-              death/depth batting return with 91 runs.
-            </p>
-            <div class="insight-list">
-              <div class="insight">
-                <strong>Best powerplay batting</strong>
-                80 runs against KKR.
-              </div>
-              <div class="insight">
-                <strong>Best middle-over batting</strong>
-                82 runs against CSK.
-              </div>
-              <div class="insight">
-                <strong>Best death/depth batting</strong>
-                91 runs against LSG.
-              </div>
-            </div>
-          </div>
-        </article>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>Batting powerplay</span><h3>Runs, dots, wickets, and boundaries</h3></div><p>Powerplay batting performance by MatchID and opponent.</p></div>
+        <div class="table-wrap"><img src="images/tables/rcb-batting-powerplay-overs-table.png" alt="RCB batting powerplay table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card"><img src="images/charts/rcb-batting-powerplay-overs-chart-1.png" alt="RCB batting powerplay chart one" /><figcaption>Runs, dot balls, and wickets in the powerplay.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-batting-powerplay-overs-chart-2.png" alt="RCB batting powerplay chart two" /><figcaption>Powerplay boundary and scoring graph.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>Batting middle overs</span><h3>Middle-over scoring control</h3></div><p>RCB's middle-over runs, dots, wickets, fours, and sixes across group-stage matches.</p></div>
+        <div class="table-wrap"><img src="images/tables/rcb-batting-middle-overs-table.png" alt="RCB batting middle overs table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card"><img src="images/charts/rcb-batting-middle-overs-chart-1.png" alt="RCB batting middle chart one" /><figcaption>Middle-over run and wicket pattern.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-batting-middle-overs-chart-2.png" alt="RCB batting middle chart two" /><figcaption>Middle-over supporting graph 2.</figcaption></figure>
+          <figure class="chart-card wide"><img src="images/charts/rcb-batting-middle-overs-chart-3.png" alt="RCB batting middle chart three" /><figcaption>Middle-over supporting graph 3.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>Batting depth overs</span><h3>Death/depth-over acceleration</h3></div><p>Late-innings batting output by opponent, including wickets and boundary-hitting.</p></div>
+        <div class="table-wrap"><img src="images/tables/rcb-batting-depth-overs-table.png" alt="RCB batting depth overs table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card"><img src="images/charts/rcb-batting-depth-overs-chart-1.png" alt="RCB batting depth chart one" /><figcaption>Depth-over run and wicket graph.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-batting-depth-overs-chart-2.png" alt="RCB batting depth chart two" /><figcaption>Depth-over supporting graph 2.</figcaption></figure>
+        </div>
+      </article>
+    </section>
+
+    <section id="bowling">
+      <div class="section-head">
+        <h2>Group-stage bowling relationships</h2>
+        <p>Bowling powerplay, middle, and depth tables are paired with every chart exported from those Excel sheets.</p>
+      </div>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>Bowling powerplay</span><h3>New-ball pressure and wickets</h3></div><p>Runs conceded, dots, wickets, and boundary control in the first six overs.</p></div>
+        <div class="table-wrap"><img src="images/tables/rcb-bowling-powerplay-overs-table.png" alt="RCB bowling powerplay table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-powerplay-overs-chart-1.png" alt="RCB bowling powerplay chart one" /><figcaption>Bowling powerplay graph 1.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-powerplay-overs-chart-2.png" alt="RCB bowling powerplay chart two" /><figcaption>Bowling powerplay graph 2.</figcaption></figure>
+          <figure class="chart-card wide"><img src="images/charts/rcb-bowling-powerplay-overs-chart-3.png" alt="RCB bowling powerplay chart three" /><figcaption>Bowling powerplay graph 3.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>Bowling middle overs</span><h3>Containment through the innings</h3></div><p>Middle-over bowling trends across all group-stage opponents.</p></div>
+        <div class="table-wrap"><img src="images/tables/rcb-bowling-middle-overs-table.png" alt="RCB bowling middle overs table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-middle-overs-chart-1.png" alt="RCB bowling middle chart one" /><figcaption>Bowling middle-over graph 1.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-middle-overs-chart-2.png" alt="RCB bowling middle chart two" /><figcaption>Bowling middle-over graph 2.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>Bowling depth overs</span><h3>Late-over pressure and damage control</h3></div><p>RCB's death/depth-over bowling outcomes by match and opponent.</p></div>
+        <div class="table-wrap"><img src="images/tables/rcb-bowling-depth-overs-table.png" alt="RCB bowling depth overs table" /></div>
+        <div class="chart-grid">
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-depth-overs-chart-1.png" alt="RCB bowling depth chart one" /><figcaption>Bowling depth-over graph 1.</figcaption></figure>
+          <figure class="chart-card"><img src="images/charts/rcb-bowling-depth-overs-chart-2.png" alt="RCB bowling depth chart two" /><figcaption>Bowling depth-over graph 2.</figcaption></figure>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Opponent pivot views</h2>
+        <p>Pivot-table summaries showing opponent-level six hitting and wickets lost by RCB.</p>
+      </div>
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>Sixes by opponent</span><h3>Boundary power by matchup</h3></div><p>Pivot view of sixes hit by RCB against each opponent.</p></div>
+        <div class="table-wrap"><img src="images/tables/sum-of-sixes-by-each-opponent-table.png" alt="Sixes by opponent table" /></div>
+        <div class="chart-grid"><figure class="chart-card wide"><img src="images/charts/sum-of-sixes-by-each-opponent-chart-1.png" alt="Sixes by opponent chart" /><figcaption>Pivot chart for sixes by opponent.</figcaption></figure></div>
+      </article>
+      <article class="analysis-block">
+        <div class="analysis-title"><div><span>Wickets by opponent</span><h3>Dismissal risk by matchup</h3></div><p>Pivot view of wickets lost by RCB against each opponent.</p></div>
+        <div class="table-wrap"><img src="images/tables/sum-of-wickets-lost-by-rcb-agai-table.png" alt="Wickets by opponent table" /></div>
+        <div class="chart-grid"><figure class="chart-card wide"><img src="images/charts/sum-of-wickets-lost-by-rcb-agai-chart-1.png" alt="Wickets by opponent chart" /><figcaption>Pivot chart for wickets lost by opponent.</figcaption></figure></div>
+      </article>
+    </section>
+
+    <section id="relationships">
+      <div class="section-head">
+        <h2>Relationships and model logic</h2>
+        <p>The workbook connects phase tables through MatchID and opponent mapping, then uses pivot-style summaries to combine batting and bowling phases.</p>
+      </div>
+      <div class="method-grid">
+        <div class="method"><span>Relationship key</span><strong>MatchID</strong><p>Every batting and bowling phase table uses MatchID to connect matches across powerplay, middle, and depth/death overs.</p></div>
+        <div class="method"><span>Dimension table</span><strong>Opponent map</strong><p>The MatchID to opponent table works like a lookup dimension for group-stage analysis.</p></div>
+        <div class="method"><span>Power Pivot idea</span><strong>Connected tables</strong><p>Separate tables stay clean, then relationships let pivots compare across phases.</p></div>
+        <div class="method"><span>XLOOKUP</span><strong>Targeted retrieval</strong><p>Player lookup examples pull strike-rate values directly from scorecard tables.</p></div>
+      </div>
+      <div class="analysis-block">
+        <div class="analysis-title"><div><span>Model tables</span><h3>Match mapping and phase pivot summaries</h3></div><p>These tables show how the workbook combines batting and bowling phase relationships.</p></div>
+        <div class="relationship" style="padding: clamp(14px, 2vw, 22px);">
+          <div class="table-wrap"><img src="images/tables/sheet12-table.png" alt="MatchID to opponent relationship table" /></div>
+          <div class="table-wrap"><img src="images/tables/sheet17-table.png" alt="Batting phase relationship pivot table" /></div>
+          <div class="table-wrap"><img src="images/tables/sheet18-table.png" alt="Wicket phase relationship pivot table" /></div>
+        </div>
       </div>
     </section>
 
     <section id="method">
       <div class="section-head">
-        <h2>How the workbook was built</h2>
-        <p>
-          This portfolio is not only a dashboard showcase; it highlights the
-          Excel workflow used to turn match data into useful cricket insights.
-        </p>
+        <h2>Excel skills demonstrated</h2>
+        <p>The portfolio presents your analysis as a finished project while still making the Excel techniques visible.</p>
       </div>
       <div class="method-grid">
-        <div class="method">
-          <span>01</span>
-          <strong>Data model</strong>
-          <p>Separate innings, bowling, opponent, and phase tables structured for analysis.</p>
-        </div>
-        <div class="method">
-          <span>02</span>
-          <strong>Power Pivot</strong>
-          <p>Workbook connections organize source tables for summaries and dashboards.</p>
-        </div>
-        <div class="method">
-          <span>03</span>
-          <strong>Pivot analysis</strong>
-          <p>Opponent-level sixes and wickets highlight group-stage match patterns.</p>
-        </div>
-        <div class="method">
-          <span>04</span>
-          <strong>XLOOKUP</strong>
-          <p>Player-specific lookups retrieve strike-rate insights directly from score tables.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="gallery">
-      <div class="section-head">
-        <h2>Dashboard gallery</h2>
-        <p>
-          Selected exports from the Excel workbook, used as visual evidence for
-          the final match and group-stage analysis.
-        </p>
-      </div>
-      <div class="gallery">
-        <figure class="shot">
-          <img src="images/final-pbks-batting.png" alt="Punjab final match batting dashboard" />
-          <figcaption>Punjab batting scorecard with runs, boundaries, and strike rate.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/final-pbks-bowling.png" alt="Punjab bowling dashboard" />
-          <figcaption>Punjab bowling economy, wickets, dot balls, and performance tags.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/group-batting-powerplay.png" alt="RCB batting powerplay dashboard" />
-          <figcaption>RCB batting powerplay comparison across group-stage opponents.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/group-batting-middle.png" alt="RCB batting middle overs dashboard" />
-          <figcaption>RCB middle-over scoring and wickets by match.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/group-batting-death.png" alt="RCB batting death overs dashboard" />
-          <figcaption>RCB death/depth-over acceleration and risk profile.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/group-bowling-powerplay.png" alt="RCB bowling powerplay dashboard" />
-          <figcaption>RCB bowling powerplay runs conceded, dots, and wickets.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/group-bowling-middle.png" alt="RCB bowling middle overs dashboard" />
-          <figcaption>RCB bowling middle-over containment across opponents.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/group-bowling-death.png" alt="RCB bowling death overs dashboard" />
-          <figcaption>RCB death/depth-over bowling performance and pressure metrics.</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="images/group-sixes-opponent.png" alt="RCB sixes by opponent pivot chart" />
-          <figcaption>Pivot chart showing RCB six-hitting volume by opponent.</figcaption>
-        </figure>
+        <div class="method"><span>01</span><strong>Dashboarding</strong><p>Tables and charts grouped into readable analysis sections.</p></div>
+        <div class="method"><span>02</span><strong>Pivot tables</strong><p>Opponent summaries and phase comparisons built from structured match data.</p></div>
+        <div class="method"><span>03</span><strong>Power Pivot</strong><p>Relationship-based thinking across batting, bowling, and match dimension tables.</p></div>
+        <div class="method"><span>04</span><strong>XLOOKUP</strong><p>Player-specific strike-rate retrieval and targeted metric lookups.</p></div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    Built from an Excel analytics workbook using Power Pivot, pivot tables,
-    XLOOKUP, phase analysis, and chart dashboards.
-  </footer>
-
-  <script>
-    const finalRuns = {
-      labels: Array.from({ length: 20 }, (_, index) => String(index + 1)),
-      rcb: [13, 6, 6, 9, 7, 9, 6, 8, 11, 7, 10, 6, 8, 14, 7, 13, 23, 5, 14, 4],
-      pbks: [13, 10, 5, 11, 9, 3, 15, 7, 11, 7, 7, 10, 3, 5, 13, 12, 8, 5, 13, 22]
-    };
-
-    new Chart(document.getElementById("finalChart"), {
-      type: "line",
-      data: {
-        labels: finalRuns.labels,
-        datasets: [
-          {
-            label: "RCB runs per over",
-            data: finalRuns.rcb,
-            borderColor: "#d71920",
-            backgroundColor: "rgba(215, 25, 32, 0.18)",
-            tension: 0.35,
-            fill: true
-          },
-          {
-            label: "PBKS runs per over",
-            data: finalRuns.pbks,
-            borderColor: "#38bdf8",
-            backgroundColor: "rgba(56, 189, 248, 0.12)",
-            tension: 0.35,
-            fill: true
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { labels: { color: "#f8fafc" } }
-        },
-        scales: {
-          x: {
-            title: { display: true, text: "Over", color: "#a9b4c4" },
-            ticks: { color: "#a9b4c4" },
-            grid: { color: "rgba(255,255,255,0.08)" }
-          },
-          y: {
-            title: { display: true, text: "Runs", color: "#a9b4c4" },
-            ticks: { color: "#a9b4c4" },
-            grid: { color: "rgba(255,255,255,0.08)" }
-          }
-        }
-      }
-    });
-
-    new Chart(document.getElementById("phaseChart"), {
-      type: "bar",
-      data: {
-        labels: ["Powerplay", "Middle overs", "Death/depth overs"],
-        datasets: [
-          {
-            label: "RCB batting avg runs",
-            data: [58.5, 66.9, 58.7],
-            backgroundColor: "#f5c451"
-          },
-          {
-            label: "Opposition avg runs vs RCB",
-            data: [52.8, 74.2, 59.0],
-            backgroundColor: "#38bdf8"
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { labels: { color: "#f8fafc" } }
-        },
-        scales: {
-          x: {
-            ticks: { color: "#a9b4c4" },
-            grid: { color: "rgba(255,255,255,0.08)" }
-          },
-          y: {
-            ticks: { color: "#a9b4c4" },
-            grid: { color: "rgba(255,255,255,0.08)" }
-          }
-        }
-      }
-    });
-  </script>
+  <footer class="footer">Built from the RCB IPL 2025 Excel analysis workbook.</footer>
 </body>
 </html>
